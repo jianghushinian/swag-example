@@ -5,8 +5,7 @@
 1. Gen doc
 
 ```bash
-$ go get -u github.com/swaggo/swag/cmd/swag
-$ swag init
+$ make swag-init
 ```
 
 2. Run app
