@@ -1,0 +1,287 @@
+basePath: /api/v2
+definitions:
+  model.Account:
+    properties:
+      id:
+        example: 1
+        format: int64
+        type: integer
+      name:
+        example: account name
+        type: string
+      uuid:
+        example: 550e8400-e29b-41d4-a716-446655440000
+        format: uuid
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: https://www.swagger.io/support
+  description: This is a sample server.
+  license:
+    name: MIT
+    url: https://mit-license.org/
+  termsOfService: https://swagger.io/terms/
+  title: Swagger Example API
+  version: "2.0"
+paths:
+  /examples/attribute:
+    get:
+      consumes:
+      - application/json
+      description: attribute
+      parameters:
+      - description: string enums
+        enum:
+        - A
+        - B
+        - C
+        in: query
+        name: enumstring
+        type: string
+      - description: int enums
+        enum:
+        - 1
+        - 2
+        - 3
+        in: query
+        name: enumint
+        type: integer
+      - description: int enums
+        enum:
+        - 1.1
+        - 1.2
+        - 1.3
+        in: query
+        name: enumnumber
+        type: number
+      - description: string valid
+        in: query
+        maxLength: 10
+        minLength: 5
+        name: string
+        type: string
+      - description: int valid
+        in: query
+        maximum: 10
+        minimum: 1
+        name: int
+        type: integer
+      - default: A
+        description: string default
+        in: query
+        name: default
+        type: string
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: fail
+          schema:
+            type: string
+        "404":
+          description: fail
+          schema:
+            type: string
+        "500":
+          description: fail
+          schema:
+            type: string
+      summary: attribute example
+      tags:
+      - example
+  /examples/calc:
+    get:
+      consumes:
+      - application/json
+      description: plus
+      parameters:
+      - description: used for calc
+        in: query
+        name: val1
+        required: true
+        type: integer
+      - description: used for calc
+        in: query
+        name: val2
+        required: true
+        type: integer
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: fail
+          schema:
+            type: string
+        "404":
+          description: fail
+          schema:
+            type: string
+        "500":
+          description: fail
+          schema:
+            type: string
+      summary: calc example
+      tags:
+      - example
+  /examples/groups/{group_id}/accounts/{account_id}:
+    get:
+      consumes:
+      - application/json
+      description: path params
+      parameters:
+      - description: Group ID
+        in: path
+        name: group_id
+        required: true
+        type: integer
+      - description: Account ID
+        in: path
+        name: account_id
+        required: true
+        type: integer
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: fail
+          schema:
+            type: string
+        "404":
+          description: fail
+          schema:
+            type: string
+        "500":
+          description: fail
+          schema:
+            type: string
+      summary: path params example
+      tags:
+      - example
+  /examples/header:
+    get:
+      consumes:
+      - application/json
+      description: custom header
+      parameters:
+      - description: Authentication header
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: fail
+          schema:
+            type: string
+        "404":
+          description: fail
+          schema:
+            type: string
+        "500":
+          description: fail
+          schema:
+            type: string
+      summary: custom header example
+      tags:
+      - example
+  /examples/ping:
+    get:
+      consumes:
+      - application/json
+      description: do ping
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: pong
+          schema:
+            type: string
+      summary: ping example
+      tags:
+      - example
+  /examples/post:
+    post:
+      consumes:
+      - application/json
+      description: post request example
+      parameters:
+      - description: Account Info
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/model.Account'
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: success
+          schema:
+            type: string
+        "500":
+          description: fail
+          schema:
+            type: string
+      summary: post request example
+      tags:
+      - example
+schemes:
+- http
+securityDefinitions:
+  OAuth2AccessCode:
+    authorizationUrl: https://example.com/oauth/authorize
+    flow: accessCode
+    scopes:
+      admin: "\t\t\t\t\t\t\tGrants read and write access to administrative information"
+    tokenUrl: https://example.com/oauth/token
+    type: oauth2
+  OAuth2Application:
+    flow: application
+    scopes:
+      admin: "\t\t\t\t\t\t\tGrants read and write access to administrative information"
+      write: "\t\t\t\t\t\t\tGrants write access"
+    tokenUrl: https://example.com/oauth/token
+    type: oauth2
+  OAuth2Implicit:
+    authorizationUrl: https://example.com/oauth/authorize
+    flow: implicit
+    scopes:
+      admin: "\t\t\t\t\t\t\tGrants read and write access to administrative information"
+      write: "\t\t\t\t\t\t\tGrants write access"
+    type: oauth2
+  OAuth2Password:
+    flow: password
+    scopes:
+      admin: "\t\t\t\t\t\t\tGrants read and write access to administrative information"
+      read: "\t\t\t\t\t\t\t\tGrants read access"
+      write: "\t\t\t\t\t\t\tGrants write access"
+    tokenUrl: https://example.com/oauth/token
+    type: oauth2
+swagger: "2.0"
+tags:
+- description: 示例接口
+  externalDocs:
+    url: https://example.example.com
+  name: example
