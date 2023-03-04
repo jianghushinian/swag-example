@@ -1,5 +1,9 @@
 # Swagger Example API
 
+## Documentation
+
+[使用 OpenAPI 构建 API 文档](https://jianghushinian.cn/2023/02/12/build-api-documentation-using-openapi/)
+
 ## Getting started
 
 1. Gen doc
